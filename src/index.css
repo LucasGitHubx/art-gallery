@@ -29,6 +29,13 @@ header nav ul{
     gap: 1rem;
 }
 
+.page{
+    width: 80%;
+    max-width: 750px;
+    min-width: 350px;
+    margin: 2rem auto;
+}
+
 @media(min-width: 1024px){
     header{
         justify-content: space-between;
