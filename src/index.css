@@ -36,6 +36,40 @@ header nav ul{
     margin: 2rem auto;
 }
 
+.main-page form{
+    margin: 0 auto;
+    width: 100%;
+    max-width: 50%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+.main-page form div{
+    width: 100%;
+}
+.main-page form input{
+    width: 100%;
+    border-bottom-left-radius: 7px;
+    
+    border: 1px solid gray;
+    border-right: none;
+    padding: .3rem;
+}
+.main-page form button{
+    padding: 0 .5rem;
+    border-left: none;
+    border: none;
+    border-top-right-radius: 8px;
+    color: white;
+    background-color: #423fe0;
+    font-size: 1rem;
+}
+
+.main-page form div{
+    display: flex;
+}
 @media(min-width: 1024px){
     header{
         justify-content: space-between;
