@@ -70,6 +70,14 @@ header nav ul{
 .main-page form div{
     display: flex;
 }
+
+.main-page form label{
+    width: 100%;
+    text-align: left;
+
+    position: relative;
+    top: .8rem;
+}
 @media(min-width: 1024px){
     header{
         justify-content: space-between;
