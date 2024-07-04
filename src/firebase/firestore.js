@@ -7,6 +7,7 @@ import {
   deleteDoc,
   doc,
   onSnapshot,
+  addDoc,
 } from "firebase/firestore";
 
 const db = getFirestore(app);
@@ -40,4 +41,15 @@ export function deletePhoto(id, setData, setLoaded) {
     await deleteDoc(docRef);
     getAllPhotos(setData, setLoaded);
   });
+}
+
+export async function addPhoto({ title, author, url, tags }, setLoaded) {
+  await addDoc(photoRef, {
+    title,
+    author,
+    tags,
+    url,
+  });
+
+  setLoaded(true);
 }
