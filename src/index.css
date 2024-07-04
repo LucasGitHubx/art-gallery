@@ -176,6 +176,16 @@ header nav ul{
     color: red;
     transition: .2s;
 }
+
+.about-page {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+.about-page p{
+    line-height: 1.5rem;
+    letter-spacing: 2px;
+}
 @media(min-width: 1024px){
     header{
         justify-content: space-between;
