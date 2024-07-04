@@ -168,7 +168,14 @@ header nav ul{
 .add-photo form button:active{
     opacity: .5;
 }
-
+.add-photo form input.error-input{
+    border: 1px solid red;
+    transition: .2s;
+}
+.add-photo form label.label-error{
+    color: red;
+    transition: .2s;
+}
 @media(min-width: 1024px){
     header{
         justify-content: space-between;
