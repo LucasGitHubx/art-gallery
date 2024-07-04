@@ -8,6 +8,7 @@ import {
 import MainLayout from "./Layouts/MainLayout";
 import MainPage from "./pages/MainPage";
 import AddPhotoPage from "./pages/AddPhotoPage";
+import AboutPage from "./pages/AboutPage";
 
 export default function App() {
   const router = createBrowserRouter(
@@ -15,6 +16,7 @@ export default function App() {
       <Route path="/" element={<MainLayout />}>
         <Route index element={<MainPage />}></Route>
         <Route path="/add" element={<AddPhotoPage />}></Route>
+        <Route path="/about" element={<AboutPage />}></Route>
       </Route>
     )
   );
