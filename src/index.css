@@ -124,6 +124,51 @@ header nav ul{
     align-items: center;
 }
 
+.add-photo form{
+    margin: 0 auto;
+    width: 100%;
+    min-width: 250px;
+    max-width: 50%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .5rem;
+}
+
+.add-photo label{
+    width: 100%;
+    text-align: left;
+
+    position: relative;
+    top: .5rem;
+}
+
+.add-photo form input{
+    width: 100%;
+    
+    border-radius: 5px;
+    border: 1px solid gray;
+    padding: .3rem;
+}
+.add-photo form button{
+    cursor: pointer;
+    padding: .3rem .6rem;
+    border-radius: 8px;
+    border: none;
+    color: white;
+    background-color: #423fe0;
+    font-size: 1rem;
+
+    transition: .3s;
+}
+.add-photo form button:hover{
+    opacity: .8;
+}
+.add-photo form button:active{
+    opacity: .5;
+}
+
 @media(min-width: 1024px){
     header{
         justify-content: space-between;
