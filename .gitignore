@@ -20,3 +20,6 @@ dist-ssr
 *.suo
 *.sln
 *.sw?
+
+# Data
+src/firebase/firebase.js
