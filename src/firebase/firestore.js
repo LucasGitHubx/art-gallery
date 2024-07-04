@@ -1,5 +1,13 @@
 import { app } from "./firebase";
-import { getFirestore, query, getDocs, collection } from "firebase/firestore";
+import {
+  getFirestore,
+  query,
+  getDocs,
+  collection,
+  deleteDoc,
+  doc,
+  onSnapshot,
+} from "firebase/firestore";
 
 const db = getFirestore(app);
 const photoRef = collection(db, "photos");
@@ -17,9 +25,19 @@ export async function getAllPhotos(setData, setLoaded) {
       url: doc.data().url,
       tags: doc.data().tags,
     });
-    setData(photos);
   });
 
-  console.log(photos);
+  setData(photos);
   setLoaded(true);
+}
+
+export function deletePhoto(id, setData, setLoaded) {
+  const docRef = doc(db, "photos", id);
+  // await deleteDoc(docRef);
+  // getAllPhotos(setData, setLoaded);
+
+  onSnapshot(docRef, async (doc) => {
+    await deleteDoc(docRef);
+    getAllPhotos(setData, setLoaded);
+  });
 }
