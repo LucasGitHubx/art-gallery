@@ -39,7 +39,7 @@ export default function MainPage() {
       ) : (
         <div className="photos">
           {data.map((photo) => {
-            return <Photo photo={photo} key={photo.id} />;
+            return <Photo photo={photo} setData={setData} key={photo.id} />;
           })}
         </div>
       )}
