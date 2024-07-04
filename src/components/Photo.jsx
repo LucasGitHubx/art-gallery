@@ -1,4 +1,13 @@
-export default function Photo({ photo }) {
+import { deletePhoto } from "../firebase/firestore";
+import { useState } from "react";
+
+export default function Photo({ photo, setData }) {
+  const [loaded, setLoaded] = useState(false);
+
+  function handleDelete(e) {
+    deletePhoto(photo.id, setData, setLoaded);
+  }
+
   return (
     <div className="photo">
       <img src={photo.url} alt={photo.title} />
@@ -9,7 +18,7 @@ export default function Photo({ photo }) {
             by <i>{photo.author}</i>
           </p>
         </div>
-        <button>Delete</button>
+        <button onClick={handleDelete}>Delete</button>
       </div>
     </div>
   );
