@@ -4,7 +4,7 @@ export default function Header() {
   return (
     <header>
       <h1>
-        <NavLink>Art Gallery</NavLink>
+        <NavLink to="/">Art Gallery</NavLink>
       </h1>
       <nav>
         <ul>
@@ -12,7 +12,7 @@ export default function Header() {
             <NavLink>About Us</NavLink>
           </li>
           <li>
-            <NavLink>Add a photo</NavLink>
+            <NavLink to="/add">Add a photo</NavLink>
           </li>
           <li>
             <NavLink>My favourites</NavLink>

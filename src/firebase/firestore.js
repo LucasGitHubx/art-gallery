@@ -7,7 +7,10 @@ import {
   deleteDoc,
   doc,
   onSnapshot,
+  addDoc,
 } from "firebase/firestore";
+
+import Toastify from "toastify-js";
 
 const db = getFirestore(app);
 const photoRef = collection(db, "photos");
@@ -40,4 +43,28 @@ export function deletePhoto(id, setData, setLoaded) {
     await deleteDoc(docRef);
     getAllPhotos(setData, setLoaded);
   });
+}
+
+export async function addPhoto({ title, author, url, tags }, setLoaded) {
+  await addDoc(photoRef, {
+    title,
+    author,
+    tags,
+    url,
+  });
+
+  Toastify({
+    text: "Photo added correctly",
+    duration: 3000,
+    newWindow: true,
+    close: true,
+    gravity: "bottom", // `top` or `bottom`
+    position: "right", // `left`, `center` or `right`
+    stopOnFocus: true, // Prevents dismissing of toast on hover
+    style: {
+      background: "linear-gradient(to right, #00b09b, #3dc954)",
+    },
+  }).showToast();
+
+  setLoaded(true);
 }
