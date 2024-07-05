@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { addPhoto } from "../firebase/firestore";
 
 export default function AddPhotoPage() {
@@ -12,12 +12,6 @@ export default function AddPhotoPage() {
   const [tagsError, setTagsError] = useState(false);
   const [urlError, setUrlError] = useState(false);
 
-  const [loaded, setLoaded] = useState(false);
-
-  useEffect(() => {
-    console.log(loaded);
-  }, [loaded]);
-
   function handleSubmit(e) {
     e.preventDefault();
 
@@ -27,15 +21,11 @@ export default function AddPhotoPage() {
     let authorValidation = true;
     let urlValidation = true;
 
-    if (tags.length == 0) {
+    if (tags.length < 3) {
       setTagsError(true);
       tagsValidation = false;
     } else {
-      const tagsArray = tags.split(",").map((element) => element.trim());
-      const newTagsArray = tagsArray.filter((element) => element != "");
-
       tagsValidation = true;
-      setTags(newTagsArray);
       setTagsError(false);
     }
 
@@ -69,20 +59,22 @@ export default function AddPhotoPage() {
       tagsValidation &&
       urlValidation
     ) {
+      const tagsFiltered = tags
+        .split(",")
+        .map((tag) => tag.trim())
+        .filter((tag) => tag != "");
+
+      addPhoto({
+        title,
+        author,
+        tags: tagsFiltered,
+        url,
+      });
+
       setTitle("");
       setAuthor("");
-      setTags("");
       setUrl("");
-
-      addPhoto(
-        {
-          title,
-          author,
-          tags,
-          url,
-        },
-        setLoaded
-      );
+      setTags("");
     }
   }
 
@@ -117,9 +109,9 @@ export default function AddPhotoPage() {
         <input
           type="text"
           placeholder="France, Paris, Trip..."
-          value={tags}
-          onChange={(e) => setTags(e.target.value)}
           className={tagsError && "error-input"}
+          onChange={(e) => setTags(e.target.value)}
+          value={tags}
         />
 
         <label className={urlError && "label-error"}>

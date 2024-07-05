@@ -26,7 +26,7 @@ export async function getAllPhotos(setData, setLoaded) {
       title: doc.data().title,
       author: doc.data().author,
       url: doc.data().url,
-      tags: doc.data().tags,
+      tags: Array(doc.data().tags),
     });
   });
 
@@ -45,7 +45,7 @@ export function deletePhoto(id, setData, setLoaded) {
   });
 }
 
-export async function addPhoto({ title, author, url, tags }, setLoaded) {
+export async function addPhoto({ title, author, url, tags }) {
   await addDoc(photoRef, {
     title,
     author,
@@ -65,6 +65,4 @@ export async function addPhoto({ title, author, url, tags }, setLoaded) {
       background: "linear-gradient(to right, #00b09b, #3dc954)",
     },
   }).showToast();
-
-  setLoaded(true);
 }
