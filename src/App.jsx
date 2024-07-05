@@ -13,10 +13,10 @@ import AboutPage from "./pages/AboutPage";
 export default function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Route path="/art-gallery/" element={<MainLayout />}>
+      <Route path="/" element={<MainLayout />}>
         <Route index element={<MainPage />}></Route>
-        <Route path="art-gallery//add" element={<AddPhotoPage />}></Route>
-        <Route path="art-gallery//about" element={<AboutPage />}></Route>
+        <Route path="/add" element={<AddPhotoPage />}></Route>
+        <Route path="/about" element={<AboutPage />}></Route>
       </Route>
     )
   );
