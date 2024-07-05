@@ -35,14 +35,14 @@ export async function getAllPhotos(setData, setLoaded) {
   setLoaded(true);
 }
 
-export function deletePhoto(id, setData, setLoaded) {
+export function deletePhoto(id, setData, tag) {
   const docRef = doc(db, "photos", id);
   // await deleteDoc(docRef);
   // getAllPhotos(setData, setLoaded);
 
   onSnapshot(docRef, async (doc) => {
     await deleteDoc(docRef);
-    getAllPhotos(setData, setLoaded);
+    searchByTag(setData, tag);
   });
 }
 

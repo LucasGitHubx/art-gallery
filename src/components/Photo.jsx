@@ -1,11 +1,9 @@
 import { deletePhoto } from "../firebase/firestore";
 import { useState } from "react";
 
-export default function Photo({ photo, setData }) {
-  const [loaded, setLoaded] = useState(false);
-
+export default function Photo({ photo, setData, tag }) {
   function handleDelete(e) {
-    deletePhoto(photo.id, setData, setLoaded);
+    deletePhoto(photo.id, setData, tag);
   }
 
   return (

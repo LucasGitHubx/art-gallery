@@ -46,7 +46,9 @@ export default function MainPage() {
       ) : (
         <div className="photos">
           {data.map((photo) => {
-            return <Photo photo={photo} setData={setData} key={photo.id} />;
+            return (
+              <Photo photo={photo} setData={setData} tag={tag} key={photo.id} />
+            );
           })}
         </div>
       )}
