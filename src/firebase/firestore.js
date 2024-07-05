@@ -8,6 +8,7 @@ import {
   doc,
   onSnapshot,
   addDoc,
+  where,
 } from "firebase/firestore";
 
 import Toastify from "toastify-js";
@@ -65,4 +66,22 @@ export async function addPhoto({ title, author, url, tags }) {
       background: "linear-gradient(to right, #00b09b, #3dc954)",
     },
   }).showToast();
+}
+
+export async function searchByTag(setData, tag) {
+  let photos = [];
+  const q = query(photoRef, where("tags", "array-contains", tag));
+  const data = await getDocs(q);
+
+  data.docs.forEach((doc) => {
+    photos.push({
+      id: doc.id,
+      title: doc.data().title,
+      author: doc.data().author,
+      url: doc.data().url,
+      tags: Array(doc.data().tags),
+    });
+  });
+
+  setData(photos);
 }
