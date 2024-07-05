@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { getAllPhotos } from "../firebase/firestore";
+import { searchByTag } from "../firebase/firestore";
 import Photo from "../components/Photo";
 
 export default function MainPage() {
@@ -10,11 +11,17 @@ export default function MainPage() {
   const [label, setLabel] = useState("Search by tag");
 
   useEffect(() => {
-    getAllPhotos(setData, setLoaded);
-  }, []);
+    if (tag == "") {
+      getAllPhotos(setData, setLoaded);
+    } else {
+      searchByTag(setData, tag);
+    }
+  }, [tag]);
 
   function handleSubmit(e) {
     e.preventDefault();
+
+    searchByTag(tag);
   }
 
   return (
