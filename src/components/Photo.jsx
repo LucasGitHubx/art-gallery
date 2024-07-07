@@ -2,12 +2,26 @@ import { deletePhoto } from "../firebase/firestore";
 import { useState } from "react";
 
 export default function Photo({ photo, setData, tag }) {
+  const [visible, setVisible] = useState(false);
+
+  function handleMouseEnter(e) {
+    setVisible(true);
+  }
+
+  function handleMouseLeave(e) {
+    setVisible(false);
+  }
+
   function handleDelete(e) {
     deletePhoto(photo.id, setData, tag);
   }
 
   return (
-    <div className="photo">
+    <div
+      className="photo"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
       <img src={photo.url} alt={photo.title} />
       <div className="information">
         <div className="main-information">
@@ -17,6 +31,10 @@ export default function Photo({ photo, setData, tag }) {
           </p>
         </div>
         <button onClick={handleDelete}>Delete</button>
+      </div>
+
+      <div className={visible ? "add-favourite visible" : "add-favourite"}>
+        <h1>Would you like to add it to favourite?</h1>
       </div>
     </div>
   );
