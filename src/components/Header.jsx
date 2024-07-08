@@ -15,7 +15,7 @@ export default function Header() {
             <NavLink to="/add">Add a photo</NavLink>
           </li>
           <li>
-            <NavLink>My favourites</NavLink>
+            <NavLink to="/favourites">My favourites</NavLink>
           </li>
         </ul>
       </nav>
