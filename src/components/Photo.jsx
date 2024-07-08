@@ -1,8 +1,9 @@
-import { deletePhoto } from "../firebase/firestore";
-import { useState } from "react";
+import { deletePhoto, addFavourite } from "../firebase/firestore";
+import { useState, useEffect } from "react";
 
 export default function Photo({ photo, setData, tag }) {
   const [visible, setVisible] = useState(false);
+  const [name, setName] = useState("");
 
   function handleMouseEnter(e) {
     setVisible(true);
@@ -14,6 +15,18 @@ export default function Photo({ photo, setData, tag }) {
 
   function handleDelete(e) {
     deletePhoto(photo.id, setData, tag);
+  }
+
+  function handleSubmitFavourite(e) {
+    e.preventDefault();
+
+    if (name.length > 3) {
+      addFavourite(photo, name);
+      setVisible(false);
+      setName("");
+    } else {
+      alert("Name must be at least 3 characters long");
+    }
   }
 
   return (
@@ -34,7 +47,16 @@ export default function Photo({ photo, setData, tag }) {
       </div>
 
       <div className={visible ? "add-favourite visible" : "add-favourite"}>
-        <h1>Would you like to add it to favourite?</h1>
+        <h3>Would you like to add it to favourites?</h3>
+        <div>
+          <input
+            type="text"
+            placeholder="Enter your name please"
+            onChange={(e) => setName(e.target.value)}
+            value={name}
+          />
+          <button onClick={handleSubmitFavourite}>submit</button>
+        </div>
       </div>
     </div>
   );
