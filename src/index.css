@@ -225,6 +225,24 @@ header nav ul{
     line-height: 1.5rem;
     letter-spacing: 2px;
 }
+.favourite-page h2{
+    text-align: center;
+}
+.favourite-page .photos{
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+.favourite-page .favourite-photo{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: .5rem;
+}
+.favourite-photo img{
+    width: 100%;
+    height: 100%;
+}
 @media(min-width: 1024px){
     header{
         justify-content: space-between;

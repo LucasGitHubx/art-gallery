@@ -131,12 +131,13 @@ export async function getFavourites(setData, setLoaded) {
   const data = await getDocs(q);
 
   data.docs.forEach((doc) => {
-    photos.push({
+    favouritePhotos.push({
       id: doc.id,
       title: doc.data().title,
       author: doc.data().author,
       url: doc.data().url,
       tags: Array(doc.data().tags),
+      person: doc.data().person,
     });
   });
 
